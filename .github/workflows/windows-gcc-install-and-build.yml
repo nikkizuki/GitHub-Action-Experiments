@@ -22,9 +22,10 @@ jobs:
     - name: Unzip GCC
       run : |
         echo Initial Directory &&
-        dir &&
+        dir && mkdir mingw &&
         echo ---------------------------------------------- &&
-        tar -xf ./mingw64.zip &&
+        tar --help &&
+        tar -xvzf ./mingw64.zip -C ./mingw &&
         echo ---------------------------------------------- &&
         echo New Directory &&
         dir
