@@ -28,12 +28,12 @@ jobs:
         tar -xvzf ./mingw64.zip -C ./mingw &&
         echo ---------------------------------------------- &&
         echo New Directory &&
-        dir
+        dir && cd ./mingw && dir && cd ../
 
     - name: Test GCC Dir
       run : >
         dir &&
-        cd ./mingw64 &&
+        cd ./mingw/bin &&
         dir &&
         cd bin &&
         dir &&
