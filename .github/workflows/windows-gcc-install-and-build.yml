@@ -21,8 +21,11 @@ jobs:
 
     - name: Unzip GCC
       run : >
+        echo Initial Directory &&
         dir &&
-        tar -xvzf mingw64.zip &&
+        echo &&
+        tar -xf mingw64.zip &&
+        echo New Directory &&
         dir
 
     - name: Test GCC Dir
