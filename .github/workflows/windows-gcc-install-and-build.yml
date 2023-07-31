@@ -17,33 +17,21 @@ jobs:
     - name: Download GCC
       run : > 
         dir &&
-        curl --output ./mingw64.zip --url https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.zip &&
-        wget --version
+        curl -LJO "https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.zip"
 
     - name: Unzip GCC
       run : |
-        echo Initial Directory &&
-        dir && mkdir mingw &&
-        echo ---------------------------------------------- &&
-        tar --version &&
-        tar -xvzf ./mingw64.zip -C ./mingw &&
-        echo ---------------------------------------------- &&
-        echo New Directory &&
-        dir &&
-        echo ---------------------------------------------- &&
-        echo Inside mingw folder
-        cd ./mingw && dir &&
-        echo ---------------------------------------------- &&
-        cd ../
+        tar -xvzf "winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.zip" -C MingW64 &&
+        echo "----------------------------------------"
+        dir
 
     - name: Test GCC Dir
-      run : >
-        dir &&
-        cd ./mingw/bin &&
-        dir &&
-        cd bin &&
-        dir &&
-        cd ../..
+      run : |
+        dir
+        echo "----------------------------------------"
+        cd MingW64
+        dir
+        
 
     - name: Add GCC to Path
       run : >
