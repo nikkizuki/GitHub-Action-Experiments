@@ -14,6 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - name: Display Current GCC Version
+      run : |
+        where gcc
+        gcc --version
+
     - name: Download GCC
       run : |
         curl -LJO "https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.zip"
@@ -22,16 +27,19 @@ jobs:
     - name: Unzip GCC
       run : |
         mkdir MingW64
-        tar -xvzf "winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.zip" -C MingW64
+        tar -xzf "winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.zip" -C ./
         dir
 
-    - name: Test GCC Dir
+    - name: Add GCC to Path
       run : |
-        cd MingW64
-        dir
-        
+        cd mingw64/bin
+        set PATH=%PATH%;%CD%
+        cd ../include
+        set PATH=%PATH%;%CD%
+        cd ../lib
+        set PATH=%PATH%;%CD%
 
-    # - name: Add GCC to Path
-    #   run : >
-    #     dir &&
-    #     set PATH=%PATH%;%CD%/mingw64/bin
+    - name: New GCC Version
+      run : |
+        where gcc
+        gcc --version
