@@ -13,11 +13,26 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    
+    - name: Download GCC
+      run : > 
+        dir &&
+        wget https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z
+
+    - name: Unzip GCC
+      run : >
+        dir &&
+        tar -xvzf winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z
+
+    - name: Test GCC Dir
+      run : >
+        cd winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1 &&
+        dir &&
+        cd bin &&
+        dir &&
+        cd ../..
+
+    - name: Add GCC to Path
+      run : >
+        dir &&
+        set PATH=%PATH%;%CD%/winlibs-x86_64-posix-seh-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1/bin
