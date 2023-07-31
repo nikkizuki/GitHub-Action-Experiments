@@ -24,11 +24,14 @@ jobs:
         echo Initial Directory &&
         dir && mkdir mingw &&
         echo ---------------------------------------------- &&
-        tar --help &&
         tar -xvzf ./mingw64.zip -C ./mingw &&
         echo ---------------------------------------------- &&
         echo New Directory &&
-        dir && cd ./mingw && dir && cd ../
+        dir &&
+        echo ---------------------------------------------- &&
+        cd ./mingw &&
+        echo ---------------------------------------------- &&
+        dir && cd ../
 
     - name: Test GCC Dir
       run : >
