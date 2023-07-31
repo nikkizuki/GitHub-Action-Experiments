@@ -22,7 +22,8 @@ jobs:
     - name: Unzip GCC
       run : >
         dir &&
-        tar -xvzf mingw64.zip
+        tar -xvzf mingw64.zip &&
+        dir
 
     - name: Test GCC Dir
       run : >
