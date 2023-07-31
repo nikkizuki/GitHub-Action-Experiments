@@ -24,6 +24,8 @@ jobs:
         echo Initial Directory &&
         dir &&
         echo ---------------------------------------------- &&
+        Expand-Archive -Force mingw64.zip .
+        echo ---------------------------------------------- &&
         tar -xf mingw64.zip &&
         echo New Directory &&
         dir
