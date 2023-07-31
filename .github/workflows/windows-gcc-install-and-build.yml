@@ -23,7 +23,7 @@ jobs:
       run : >
         echo Initial Directory &&
         dir &&
-        echo &&
+        echo ---------------------------------------------- &&
         tar -xf mingw64.zip &&
         echo New Directory &&
         dir
